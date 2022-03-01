@@ -1,12 +1,9 @@
 import { ReactElement, ReactNode } from "react";
 
 interface BoxProps {
-    children: ReactNode
+  children: ReactNode;
 }
 
-interface BoxElement extends ReactElement {}
+type BoxElement = ReactElement;
 
-export type {
-    BoxProps,
-    BoxElement
-}
+export type { BoxProps, BoxElement };

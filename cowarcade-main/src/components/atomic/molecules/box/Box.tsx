@@ -1,12 +1,12 @@
-import { BoxElement, BoxProps } from './Types'
+import { BoxProps, BoxElement } from "./Types";
 
 const Box = ({ children }: BoxProps): BoxElement => {
-    return (
-        <div>
-            <h1>hello Box</h1>
-            {children}
-        </div>
-    )
-}
+  return (
+    <div>
+      <h1>hello Box</h1>
+      {children}
+    </div>
+  );
+};
 
-export default Box
+export default Box;
