@@ -1,4 +1,4 @@
-import { BoxProps, BoxElement } from "./Types";
+import { BoxProps, BoxElement } from './Types';
 
 const Box = ({ children }: BoxProps): BoxElement => {
   return (

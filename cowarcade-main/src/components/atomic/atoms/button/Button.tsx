@@ -1,11 +1,9 @@
-import { ReactElement } from 'react'
+import { ReactElement } from 'react';
 
-import { ButtonProps } from './Types'
+import { ButtonProps } from './Types';
 
 const MyButton = (props: ButtonProps): ReactElement => {
-    return (
-        <button>Submit me</button>
-    )
-}
+  return <button>Submit me</button>;
+};
 
-export default MyButton
+export default MyButton;
