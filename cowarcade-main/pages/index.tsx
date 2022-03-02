@@ -5,7 +5,7 @@ import { Button, Box } from 'src/components';
 const Home: NextPage = () => {
   return (
     <Box>
-      <Button onOk={() => console.log('hello')} />
+      <Button type='dashed'>Primary Button</Button>
     </Box>
   );
 };

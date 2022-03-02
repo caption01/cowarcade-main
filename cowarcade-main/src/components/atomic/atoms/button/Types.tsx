@@ -1,6 +1,4 @@
-interface ButtonProps {
-    onOk: () => void
-}
+import { ButtonProps } from 'antd';
 
 export type {
     ButtonProps
