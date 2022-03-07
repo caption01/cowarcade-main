@@ -17,6 +17,7 @@ module.exports = {
   rules: {
     '@typescript-eslint/no-unused-vars': 'error',
     '@typescript-eslint/consistent-type-definitions': 'off',
+    "@typescript-eslint/no-unsafe-assignment": "off",
     semi: 'error',
     quotes: ['error', 'single', { 'avoidEscape': true }],
     "jsx-quotes": ["error", "prefer-single"]

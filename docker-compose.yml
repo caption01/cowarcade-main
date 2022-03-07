@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  cowarcade-main:
+    build:
+      dockerfile: Dockerfile
+      context: "./cowarcade-main"
+      args:
+        - NODE_ENV=development
+    volumes:
+      - /app/node_modules
+      - ./cowarcade-main:/app
+      - volumn-cowarcade-main:/app
+    ports:
+      - "3001:3000"
+    env_file:
+      - ./cowarcade-main/config_env/.dev.env
+
+volumes:
+  volumn-cowarcade-main:

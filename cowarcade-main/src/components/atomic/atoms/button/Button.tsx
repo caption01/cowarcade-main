@@ -6,8 +6,8 @@ import { ButtonProps } from './Types';
 
 const StyledBtn = styled(ButtonAntd)``;
 
-const Button = (props: ButtonProps): ReactElement => {
-  return <StyledBtn type='primary' {...props}>Primary Button</StyledBtn>;
+const Button = ({ children, ...props}: ButtonProps): ReactElement => {
+  return <StyledBtn type='primary' {...props}>{children}</StyledBtn>;
 };
 
 export default Button;
