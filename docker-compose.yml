@@ -10,7 +10,6 @@ services:
     volumes:
       - /app/node_modules
       - ./cowarcade-main:/app
-      - volumn-cowarcade-main:/app
     ports:
       - "3001:3000"
     env_file:

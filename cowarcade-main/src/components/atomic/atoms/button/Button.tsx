@@ -2,12 +2,16 @@ import { ReactElement } from 'react';
 import { Button as ButtonAntd } from 'antd';
 import styled from 'styled-components';
 
-import { ButtonProps } from './Types';
+import { ButtonProps } from './ButtonTypes';
 
 const StyledBtn = styled(ButtonAntd)``;
 
-const Button = ({ children, ...props}: ButtonProps): ReactElement => {
-  return <StyledBtn type='primary' {...props}>{children}</StyledBtn>;
+const Button = ({ children, ...props }: ButtonProps): ReactElement => {
+  return (
+    <StyledBtn type='primary' {...props}>
+      {children}
+    </StyledBtn>
+  );
 };
 
 export default Button;

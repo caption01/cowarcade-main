@@ -1,3 +1,3 @@
-import Box from './box';
+import BoxText from './boxText';
 
-export { Box };
+export { BoxText };
