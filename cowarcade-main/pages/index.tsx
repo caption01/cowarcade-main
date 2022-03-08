@@ -1,9 +1,13 @@
 import type { NextPage } from 'next';
 
-import { Button, Box, BoxText } from 'src/components';
+import { HomePageLayout, Text } from 'src/components';
 
 const Home: NextPage = () => {
-  return <BoxText>hello me</BoxText>;
+  return (
+    <HomePageLayout>
+      <Text type='header'>Nutchapon...</Text>
+    </HomePageLayout>
+  );
 };
 
 export default Home;
