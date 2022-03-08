@@ -7,8 +7,10 @@ interface TextProps {
 
 type StyleConfig = {
   fontSize: string;
+  fontWeight: number;
+  letterSpacing: string;
 };
 
-type TextType = 'header' | 'title' | 'content' | 'default';
+type TextType = 'header' | 'subHeader' | 'title' | 'body' | 'default';
 
 export type { TextProps, TextType, StyleConfig };

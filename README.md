@@ -15,3 +15,4 @@
 **Project Inspiration**
 
 - [inspire](https://derolez.dev/?fbclid=IwAR2366riunw43R3dU8tWys4nVEBrXMK-Hnl1fOEndruTGIOdud88HAXkk_c)
+- [font](https://material.io/design/typography/the-type-system.html#type-scale)
