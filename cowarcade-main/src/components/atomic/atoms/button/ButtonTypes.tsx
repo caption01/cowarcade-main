@@ -1,5 +1,3 @@
 import { ButtonProps } from 'antd';
 
-export type {
-    ButtonProps
-};
+export type { ButtonProps };
