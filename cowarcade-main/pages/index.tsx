@@ -1,11 +1,17 @@
 import type { NextPage } from 'next';
 
-import { HomePageLayout, Text } from 'src/components';
+import { HomePageLayout, Text, Button, Box } from 'src/components';
 
 const Home: NextPage = () => {
   return (
     <HomePageLayout>
-      <Text type='header'>Nutchapon...</Text>
+      <Text type='header'>
+        🙋‍♂️ I'm a "Developer" with a passionate for Cloud ☁️, Linux 📟, and Web
+        technology 🖥.
+      </Text>
+      <Box>
+        <Button type='primary'>Bio</Button>
+      </Box>
     </HomePageLayout>
   );
 };
