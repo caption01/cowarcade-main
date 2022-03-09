@@ -1,10 +1,19 @@
 import { ButtonProps as ButtonAntdProps } from 'antd';
 
+import { HTMLRefElement } from 'src/utils/hooks';
+
+type ButtonAntdPropsOmit = Omit<ButtonAntdProps, 'type'>;
+
 interface ButtonStyle {
+  ref?: HTMLRefElement;
   bgColor?: string;
   fontColor?: string;
 }
 
-interface ButtonProps extends ButtonAntdProps, ButtonStyle {}
+type TypeButton = 'primary';
 
-export type { ButtonProps, ButtonStyle };
+interface ButtonProps extends ButtonAntdPropsOmit, ButtonStyle {
+  type: TypeButton;
+}
+
+export type { ButtonProps, ButtonStyle, TypeButton };

@@ -10,7 +10,7 @@ const Home: NextPage = () => {
         technology 🖥.
       </Text>
       <Box>
-        <Button>Bio</Button>
+        <Button type='primary'>Bio</Button>
       </Box>
     </HomePageLayout>
   );
