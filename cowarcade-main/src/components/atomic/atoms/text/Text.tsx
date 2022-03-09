@@ -8,7 +8,7 @@ const TextWrapper = styled.div<StyleConfig>`
   letter-spacing: ${(props) => props.letterSpacing};
 `;
 
-const Text = ({ type = 'default', children }: TextProps) => {
+const Text = ({ type = 'default', children, ...props }: TextProps) => {
   const { fontSize, fontWeight, letterSpacing } = getTextStyle(type);
 
   return (
@@ -16,6 +16,7 @@ const Text = ({ type = 'default', children }: TextProps) => {
       fontSize={fontSize}
       fontWeight={fontWeight}
       letterSpacing={letterSpacing}
+      {...props}
     >
       {children}
     </TextWrapper>
@@ -39,7 +40,7 @@ function getTextStyle(type: TextType): StyleConfig {
     title: {
       fontSize: '2.2rem',
       letterSpacing: '0.015rem',
-      fontWeight: 400,
+      fontWeight: 500,
     },
     body: {
       fontSize: '1.8rem',

@@ -1,3 +1,10 @@
-import { ButtonProps } from 'antd';
+import { ButtonProps as ButtonAntdProps } from 'antd';
 
-export type { ButtonProps };
+interface ButtonStyle {
+  bgColor?: string;
+  fontColor?: string;
+}
+
+interface ButtonProps extends ButtonAntdProps, ButtonStyle {}
+
+export type { ButtonProps, ButtonStyle };
