@@ -10,7 +10,15 @@ const Home: NextPage = () => {
         technology 🖥.
       </Text>
       <Box>
-        <Button type='primary'>Bio</Button>
+        <Button
+          type='primary'
+          onClick={() => {
+            console.log('hello');
+          }}
+          width={10}
+        >
+          Bio
+        </Button>
       </Box>
     </HomePageLayout>
   );

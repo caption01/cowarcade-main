@@ -4,10 +4,16 @@ import styled, { useTheme, DefaultTheme } from 'styled-components';
 
 import { Text } from 'src/components';
 import { useTrackElement, ElementStateType } from 'src/utils/hooks';
+import { spaceMixin } from 'src/theme/mixins';
 
-import { ButtonProps, ButtonStyle, TypeButton } from './ButtonTypes';
+import {
+  ButtonProps,
+  ButtonStyled,
+  ButtonStyle,
+  TypeButton,
+} from './ButtonTypes';
 
-const StyledBtn = styled(ButtonAntd)<ButtonStyle>`
+const StyledBtn = styled(ButtonAntd)<ButtonStyled>`
   // actual antd-animating-attr
   // &[ant-click-animating-without-extra-node='true']::after {
   //   display: none;
@@ -19,8 +25,9 @@ const StyledBtn = styled(ButtonAntd)<ButtonStyle>`
 
   & {
     padding: 0.8rem;
-    height: auto;
     min-width: 10rem;
+
+    height: auto;
     border-radius: 0.8rem;
     border-color: unset;
     position: relative;
@@ -29,6 +36,8 @@ const StyledBtn = styled(ButtonAntd)<ButtonStyle>`
 
     background: ${(props) => props?.bgColor};
     color: ${(props) => props?.fontColor};
+
+    ${spaceMixin};
   }
 
   &:active,
@@ -46,9 +55,8 @@ const StyledBtn = styled(ButtonAntd)<ButtonStyle>`
     transform: scale(0);
     animation: ripple 600ms linear;
     background-color: rgba(255, 255, 255, 0.7);
-
   }
-  
+
   @keyframes ripple {
     to {
       transform: scale(4);
@@ -68,7 +76,7 @@ const Button = ({
 
   const { bgColor, fontColor } = buildButtonStyle(type, theme, elemState);
 
-  function handleOnClick(event: ChangeEvent<HTMLButtonElement>){
+  function handleOnClick(event: ChangeEvent<HTMLButtonElement>) {
     event.preventDefault();
 
     createRippleEffect(event);
@@ -95,8 +103,8 @@ const Button = ({
 function createRippleEffect(event: ChangeEvent<HTMLButtonElement>) {
   const button = event.currentTarget as HTMLButtonElement;
 
-  const circle = document.createElement('span') as HTMLSpanElement;
-  const diameter = Math.max(button.clientWidth as number, button.clientHeight as number);
+  const circle = document.createElement('span');
+  const diameter = Math.max(button.clientWidth, button.clientHeight);
   const radius = diameter / 2;
 
   const pointerXOnElement = event?.nativeEvent?.offsetX;
@@ -106,12 +114,11 @@ function createRippleEffect(event: ChangeEvent<HTMLButtonElement>) {
   const originTop = pointerYOnElement - radius;
 
   if (circle) {
-    circle.style.width =  `${diameter}px`;
+    circle.style.width = `${diameter}px`;
     circle.style.height = `${diameter}px`;
     circle.style.left = `${originLeft}px`;
     circle.style.top = `${originTop}px`;
     circle.classList.add('ripple');
-
   }
 
   const ripple = button.getElementsByClassName('ripple')[0];
