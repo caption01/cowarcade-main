@@ -13,6 +13,7 @@ interface ButtonStyle {
 type TypeButton = 'primary';
 
 interface ButtonProps extends ButtonAntdPropsOmit, ButtonStyle {
+  onClick: () => void,
   type: TypeButton;
 }
 

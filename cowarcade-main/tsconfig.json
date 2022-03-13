@@ -1,6 +1,7 @@
 {
   "extends": "@tsconfig/node16/tsconfig.json",
   "compilerOptions": {
+    "lib": ["es2021", "DOM"],
     "allowJs": true,
     "noEmit": true,
     "moduleResolution": "node",
