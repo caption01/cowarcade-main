@@ -19,3 +19,4 @@
 - [font](https://material.io/design/typography/the-type-system.html#type-scale)
 - [ui-inspire](https://www.freepik.com/premium-vector/colorful-web-design-button-collection-with-flat-design_3099346.htm)
 - [use-hover](https://usehooks.com/useHover/)
+- [button-animation](https://dev.to/webdeasy/top-20-css-buttons-animations-f41)

@@ -1,18 +1,28 @@
 import styled from 'styled-components';
 
-import { TextProps, TextType, StyleConfig } from './TextTypes';
+import { spaceMixin } from 'src/theme/mixins';
+import { TextProps, TextType, TextStyledProps, BuildStyle } from './TextTypes';
 
-const TextWrapper = styled.div<StyleConfig>`
+const TextWrapper = styled.div<TextStyledProps>`
+  display: ${(props) => props.display};
   font-size: ${(props) => props.fontSize};
   font-weight: ${(props) => props.fontWeight};
   letter-spacing: ${(props) => props.letterSpacing};
+
+  ${spaceMixin}
 `;
 
-const Text = ({ type = 'default', children, ...props }: TextProps) => {
+const Text = ({
+  type = 'default',
+  display = 'inline-block',
+  children,
+  ...props
+}: TextProps) => {
   const { fontSize, fontWeight, letterSpacing } = getTextStyle(type);
 
   return (
     <TextWrapper
+      display={display}
       fontSize={fontSize}
       fontWeight={fontWeight}
       letterSpacing={letterSpacing}
@@ -25,7 +35,7 @@ const Text = ({ type = 'default', children, ...props }: TextProps) => {
 
 export default Text;
 
-function getTextStyle(type: TextType): StyleConfig {
+function getTextStyle(type: TextType): BuildStyle {
   const textStyle = {
     header: {
       fontSize: '4.8rem',
