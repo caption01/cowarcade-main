@@ -1,16 +1,22 @@
 import { ReactNode } from 'react';
 
-interface TextProps {
-  type: TextType;
-  children: ReactNode;
-}
+import { SpaceMixin } from 'src/theme/mixins';
 
-type StyleConfig = {
+type TextStyledProps = {
+  display: string;
   fontSize: string;
   fontWeight: number;
   letterSpacing: string;
 };
 
+interface TextProps extends SpaceMixin {
+  type: TextType;
+  display?: string;
+  children: ReactNode;
+}
+
+type BuildStyle = Omit<TextStyledProps, 'display'>;
+
 type TextType = 'header' | 'subHeader' | 'title' | 'body' | 'default';
 
-export type { TextProps, TextType, StyleConfig };
+export type { TextProps, TextType, TextStyledProps, BuildStyle };
