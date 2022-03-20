@@ -18,6 +18,10 @@ interface SpaceMixin {
   height?: Height;
   padding?: PaddingMargin;
   margin?: PaddingMargin;
+  ml?: MarginUnit;
+  mr?: MarginUnit;
+  pl?: PaddingUnit;
+  pr?: PaddingUnit;
 }
 
 function handleWidthAndHeightCss(wh: Width | Height): string {
@@ -45,11 +49,25 @@ function handlePaddingMarginCss(pm: PaddingMargin): string | undefined {
   }
 }
 
+function handlePaddingMarginLeftRightCss(
+  unit: PaddingUnit | MarginUnit | undefined
+): string | undefined {
+  if (typeof unit === 'number') {
+    return `${unit}rem`;
+  }
+}
+
 const spaceMixin = css`
   width: ${({ width }: SpaceMixin) => handleWidthAndHeightCss(width)};
   height: ${({ height }: SpaceMixin) => handleWidthAndHeightCss(height)};
   padding: ${({ padding }: SpaceMixin) => handlePaddingMarginCss(padding)};
   margin: ${({ margin }: SpaceMixin) => handlePaddingMarginCss(margin)};
+
+  margin-right: ${({ mr }: SpaceMixin) => handlePaddingMarginLeftRightCss(mr)};
+  margin-left: ${({ ml }: SpaceMixin) => handlePaddingMarginLeftRightCss(ml)};
+
+  padding-right: ${({ pr }: SpaceMixin) => handlePaddingMarginLeftRightCss(pr)};
+  padding-left: ${({ pl }: SpaceMixin) => handlePaddingMarginLeftRightCss(pl)};
 `;
 
 export { spaceMixin };

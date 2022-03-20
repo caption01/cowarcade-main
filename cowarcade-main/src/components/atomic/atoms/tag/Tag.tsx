@@ -8,12 +8,15 @@ import { TagProps } from './TagTypes';
 const StyledTag = styled.span`
   & {
     display: inline-block;
-    margin: 0;
-    padding: 0.4rem 0.4rem;
     border-radius: 0.4rem;
 
     color: ${(props) => props.theme.colors.white};
     background-color: ${(props) => props.color};
+  }
+
+  &.tag__body {
+    margin: 0;
+    padding: 0.4rem 0.4rem;
   }
 
   ${spaceMixin}
@@ -22,7 +25,7 @@ const StyledTag = styled.span`
 const Tag = ({ icon, color, children, ...props }: TagProps) => {
   return (
     <StyledTag color={color} {...props}>
-      <Box display='flex'>
+      <Box className='tag__body' display='flex'>
         {icon && <Icon type={icon} size={2.4} margin={[0, 0.3]} />}
         <Text type='body' margin={[0, 0.3]}>
           {children}

@@ -4,6 +4,7 @@ import { SpaceMixin } from 'src/theme/mixins';
 
 interface BoxProps extends SpaceMixin {
   display?: string;
+  className?: string;
   children: ReactNode;
 }
 
