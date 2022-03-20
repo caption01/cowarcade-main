@@ -5,20 +5,15 @@ import { map } from 'lodash';
 import Slider from 'react-slick';
 import styled from 'styled-components';
 
-import { HomePageLayout, Text, Box, Tag } from 'src/components';
+import { HomePageLayout, Text, Box, Tag, CardPopup } from 'src/components';
 
 const Content = styled.div`
   width: 50vw;
-  height: 300px;
-  background: red;
+  max-width: 80rem;
   margin: auto;
 `;
 
-const Card = styled.div`
-  height: 250px;
-  background: blue;
-  border: 2px green solid;
-`;
+const example = '/assets/example.jpeg';
 
 const tags = [
   {
@@ -32,35 +27,35 @@ const tags = [
     url: 'https://www.linkedin.com/in/nutchapon-hanouypornlert-85794a174/',
   },
   {
+    title: 'Profile',
+    color: '#77B6EA',
+    url: 'https://drive.google.com/file/d/1C6yiFHnxQoLByWMRSyzc3vmFXRFTN8SK/view?usp=sharing',
+  },
+  {
     title: 'Medium',
     color: '#363732',
     url: 'https://medium.com/@nhcoding',
-  },
-  {
-    title: 'Profile',
-    color: '#C7D3DD',
-    url: 'https://drive.google.com/file/d/1C6yiFHnxQoLByWMRSyzc3vmFXRFTN8SK/view?usp=sharing',
   },
 ];
 
 const cards = [
   {
     itemIndex: 0,
-    title: 0,
-    status: (itemIndex, activeIndex) =>
-      itemIndex === activeIndex ? 'item-active' : 'non-active',
+    content: 'a',
+    src: example,
+    active: isActive,
   },
   {
     itemIndex: 1,
-    title: 1,
-    status: (itemIndex, activeIndex) =>
-      itemIndex === activeIndex ? 'item-active' : 'non-active',
+    content: 'b',
+    src: example,
+    active: isActive,
   },
   {
     itemIndex: 2,
-    title: 2,
-    status: (itemIndex, activeIndex) =>
-      itemIndex === activeIndex ? 'item-active' : 'non-active',
+    content: 'c',
+    src: example,
+    active: isActive,
   },
 ];
 
@@ -68,7 +63,7 @@ const settings = {
   className: 'center',
   centerMode: true,
   infinite: true,
-  centerPadding: '200px',
+  centerPadding: '180px',
   slidesToShow: 1,
   speed: 500,
 };
@@ -108,11 +103,14 @@ const Home: NextPage = () => {
       <Content>
         <div>
           <Slider beforeChange={handleBeforeChange} {...settings}>
-            {map(cards, (c, idx) => (
-              <Card key={c?.itemIndex}>
-                <h3>{c?.title}</h3>
-                <h3>{c?.status(c?.itemIndex, activeIndex)}</h3>
-              </Card>
+            {map(cards, (c) => (
+              <Box key={c?.itemIndex} padding={2}>
+                <CardPopup
+                  active={c?.active(c?.itemIndex, activeIndex)}
+                  content={c?.content}
+                  src={c?.src}
+                />
+              </Box>
             ))}
           </Slider>
         </div>
@@ -122,3 +120,7 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+function isActive(itemIndex: number, activeIndex: number): boolean {
+  return itemIndex === activeIndex;
+}
