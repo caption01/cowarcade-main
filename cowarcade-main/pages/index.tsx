@@ -43,18 +43,21 @@ const cards = [
     itemIndex: 0,
     content: 'a',
     src: example,
+    title: 'enres.',
     active: isActive,
   },
   {
     itemIndex: 1,
     content: 'b',
     src: example,
+    title: 'enres.',
     active: isActive,
   },
   {
     itemIndex: 2,
     content: 'c',
     src: example,
+    title: 'enres.',
     active: isActive,
   },
 ];
@@ -109,6 +112,7 @@ const Home: NextPage = () => {
                   active={c?.active(c?.itemIndex, activeIndex)}
                   content={c?.content}
                   src={c?.src}
+                  title={c?.title}
                 />
               </Box>
             ))}

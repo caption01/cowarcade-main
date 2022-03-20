@@ -5,13 +5,9 @@ import { ImageFillProps } from './ImageFillProps';
 
 const Wrapper = styled.div`
   position: relative;
-  width: 10rem;
-  height: 10rem;
+  width: 100%;
+  height: 12rem;
   margin: auto;
-
-  img {
-    border-radius: 50%;
-  }
 `;
 
 const example = '/assets/example.jpeg';
@@ -23,7 +19,7 @@ function Image({ quality = 60, src = example, ...props }: ImageFillProps) {
         alt='example'
         src={src}
         layout='fill'
-        objectFit='none'
+        objectFit='contain'
         quality={quality}
       />
     </Wrapper>
