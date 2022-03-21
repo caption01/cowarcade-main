@@ -11,9 +11,11 @@ const Content = styled.div`
   width: 50vw;
   max-width: 80rem;
   margin: auto;
-`;
 
-const example = '/assets/example.jpeg';
+  .content_header {
+    text-align: center;
+  }
+`;
 
 const tags = [
   {
@@ -41,23 +43,29 @@ const tags = [
 const cards = [
   {
     itemIndex: 0,
-    content: 'a',
-    src: example,
+    src: '/assets/enres-logo.png',
+    link: 'https://enres.co/',
     title: 'enres.',
+    content:
+      'Working as Frontend-Developer build a IoT-Platform which rich of useful content such as graph and report and using modern stack as NextJs, AWS-Cloud Technology.',
     active: isActive,
   },
   {
     itemIndex: 1,
-    content: 'b',
-    src: example,
-    title: 'enres.',
+    src: '/assets/appman-logo.jpeg',
+    link: 'https://www.appman.co.th/',
+    title: 'Appman.',
+    content:
+      'Working as Mid-Software engineer create a multi-platform applications on web, mobile and tablet using React and Cordova on Complex-Insurance Business',
     active: isActive,
   },
   {
     itemIndex: 2,
-    content: 'c',
-    src: example,
-    title: 'enres.',
+    src: '/assets/seedooh-logo.png',
+    link: 'https://www.bangkoklabs.com/',
+    title: 'BangkokLabs.',
+    content:
+      'Fullstack Developer at bangkoklabs, Working with an international team to create a OOH-Advertisement tech-business based on django, react and cloud-services.',
     active: isActive,
   },
 ];
@@ -104,6 +112,14 @@ const Home: NextPage = () => {
         </Box>
       </Box>
       <Content>
+        <Text
+          className='content_header'
+          type='subHeader'
+          margin={[2, 0]}
+          width='100%'
+        >
+          Experiences
+        </Text>
         <div>
           <Slider beforeChange={handleBeforeChange} {...settings}>
             {map(cards, (c) => (
@@ -113,6 +129,7 @@ const Home: NextPage = () => {
                   content={c?.content}
                   src={c?.src}
                   title={c?.title}
+                  link={c?.link}
                 />
               </Box>
             ))}
