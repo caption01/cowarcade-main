@@ -13,6 +13,7 @@ interface TextProps extends SpaceMixin {
   type: TextType;
   display?: string;
   children: ReactNode;
+  className?: string;
 }
 
 type BuildStyle = Omit<TextStyledProps, 'display'>;

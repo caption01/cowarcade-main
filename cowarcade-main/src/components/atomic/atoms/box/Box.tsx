@@ -10,8 +10,12 @@ const StyledDiv = styled.div<BoxProps>`
   ${spaceMixin}
 `;
 
-const Box = ({ display = 'block', children }: BoxProps) => {
-  return <StyledDiv display={display}>{children}</StyledDiv>;
+const Box = ({ display = 'block', children, ...props }: BoxProps) => {
+  return (
+    <StyledDiv display={display} {...props}>
+      {children}
+    </StyledDiv>
+  );
 };
 
 export default Box;
