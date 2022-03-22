@@ -13,8 +13,8 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-region: ap-southeast-1
-          role-to-assume: arn:aws:iam::616520069289:user/GithubActionUser
-          role-session-name: GithubActionUserSession
+          role-to-assume: arn:aws:iam::616520069289:role/GithubActionCodeCommitRole
+          role-session-name: GithubActionRoleSession
 
       - name: List All Repository
         run: |
