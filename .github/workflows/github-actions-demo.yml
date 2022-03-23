@@ -12,13 +12,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      # - name: Configure AWS Credentials
-      #   uses: aws-actions/configure-aws-credentials@v1
-      #   with:
-      #     aws-region: ap-southeast-1
-      #     role-to-assume: arn:aws:iam::616520069289:role/example-assume-role-Role-18HTZ48RVBAYI
-      #     role-session-name: GithubActionRoleSession
-
       - name: Configure AWS
         run: |
           export AWS_ROLE_ARN=arn:aws:iam::616520069289:role/example-assume-role-Role-18HTZ48RVBAYI
