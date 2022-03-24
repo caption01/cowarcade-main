@@ -12,6 +12,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Hello
+        run: echo "hello"
+
       - name: Configure AWS
         run: |
           export AWS_ROLE_ARN=arn:aws:iam::616520069289:role/example-assume-role-Role-18HTZ48RVBAYI
