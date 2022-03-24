@@ -12,6 +12,7 @@
 
 - [ts-eslint-prettier](https://blog.logrocket.com/linting-typescript-using-eslint-and-prettier/)
 - [styled-theme-typescript](https://medium.com/rbi-tech/theme-with-styled-components-and-typescript-209244ec15a3)
+- [github odic](https://stackoverflow.com/questions/70025635/aws-github-action-user-is-not-authorized-to-perform-stsassumerole-on-resourc)
 
 **Project Inspiration**
 

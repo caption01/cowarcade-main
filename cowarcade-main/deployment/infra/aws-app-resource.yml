@@ -4,7 +4,7 @@ Parameters:
     Default: caption01
   RepositoryName:
     Type: String
-    Default: caption01/cowarcade-main
+    Default: cowarcade-main
   OIDCProviderArn:
     Description: Arn for the GitHub OIDC Provider.
     Default: ""
@@ -29,9 +29,14 @@ Resources:
                 - !Ref GithubOidc
                 - !Ref OIDCProviderArn
             Condition:
-              "ForAllValues:StringEquals":
-                - token.actions.githubusercontent.com:aud: sts.amazonaws.com
-                - token.actions.githubusercontent.com:sub: !Sub repo:${GitHubOrg}/${RepositoryName}:*
+              StringEquals:
+                token.actions.githubusercontent.com:aud: 
+                  sts.amazonaws.com
+              StringLike:
+                token.actions.githubusercontent.com:sub: 
+                  !Sub repo:${GitHubOrg}/${RepositoryName}:*
+      ManagedPolicyArns: 
+        - arn:aws:iam::aws:policy/AWSCodeCommitFullAccess
 
   GithubOidc:
     Type: AWS::IAM::OIDCProvider

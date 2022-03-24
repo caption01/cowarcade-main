@@ -6,3 +6,5 @@ aws cloudformation create-stack --stack-name example-assume-role \
 aws cloudformation delete-stack \
 --stack-name example-assume-role \
 --profile nutchapon 
+
+aws cloudformation validate-template --template-body file://aws-app-resource.yml --profile nutchapon
