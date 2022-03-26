@@ -8,8 +8,8 @@ env:
   CODE_COMMIT_REPO_URL: https://git-codecommit.ap-southeast-1.amazonaws.com/v1/repos/cowarcade-main-app
   AWS_CODECOMMIT_URL1: ${{ secrets.ENV_APP }}
   AWS_CODECOMMIT_URL2: ${{ secrets.ENV_APP.AWS_CODECOMMIT_URL }}
-  AWS_CODECOMMIT_URL3: ${{ ENV_APP }}
-  AWS_CODECOMMIT_URL4: ${{ ENV_APP.AWS_CODECOMMIT_URL }}
+  # AWS_CODECOMMIT_URL3: ${{ ENV_APP }}
+  # AWS_CODECOMMIT_URL4: ${{ ENV_APP.AWS_CODECOMMIT_URL }}
   AWS_CODECOMMIT_URL5: ${{ AWS_CODECOMMIT_URL }}
 
 jobs:
