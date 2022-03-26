@@ -18,6 +18,9 @@ jobs:
         env:
           AWS_CODECOMMIT_GIT_USERNAME: ${{ secrets.AWS_CODECOMMIT_GIT_USERNAME }}
           AWS_CODECOMMIT_GIT_PASSWORD: ${{ secrets.AWS_CODECOMMIT_GIT_PASSWORD }}
+        run: |
+          git config --global user.name $AWS_CODECOMMIT_GIT_USERNAME
+          git config --global user.password $AWS_CODECOMMIT_GIT_PASSWORD
 
       - name: configure aws credentials
         uses: aws-actions/configure-aws-credentials@v1
