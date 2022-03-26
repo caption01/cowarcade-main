@@ -14,13 +14,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Test-Secret
+      - name: Set Git Credential
         env:
-          REPO_ACTION: ${{ secrets.REPO_ACTION }}
-          REPO_DEBOT: ${{ secrets.REPO_DEBOT }}
-        run: |
-          echo $REPO_ACTION
-          echo $REPO_DEBOT
+          AWS_CODECOMMIT_GIT_USERNAME: ${{ secrets.AWS_CODECOMMIT_GIT_USERNAME }}
+          AWS_CODECOMMIT_GIT_PASSWORD: ${{ secrets.AWS_CODECOMMIT_GIT_PASSWORD }}
 
       - name: configure aws credentials
         uses: aws-actions/configure-aws-credentials@v1
