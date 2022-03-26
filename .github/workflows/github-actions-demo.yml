@@ -5,7 +5,8 @@ on:
     branches: [prod]
 
 env:
-  CODE_COMMIT_REPO_URL: https://git-codecommit.ap-southeast-1.amazonaws.com/v1/repos/cowarcade-main-app
+  - CODE_COMMIT_REPO_URL: https://git-codecommit.ap-southeast-1.amazonaws.com/v1/repos/cowarcade-main-app
+  - AWS_CODECOMMIT_URL: ${{ env.AWS_CODECOMMIT_URL }}
 
 jobs:
   codecommit:
@@ -33,13 +34,12 @@ jobs:
         run: |
           echo "All -> $env"
           echo "AWS_CODECOMMIT_URL -> $AWS_CODECOMMIT_URL"
-        env:
-          AWS_CODECOMMIT_URL: ${{ env.AWS_CODECOMMIT_URL }}
 
       - name: Add Origin CodeCommit
         run: |
-          echo "CodeCommit URL-> $:CODE_COMMIT_REPO_URL"
+          echo "CodeCommit URL-> $CODE_COMMIT_REPO_URL"
           git remote add codecommit $CODE_COMMIT_REPO_URL
+          git remote add codecommit-new $AWS_CODECOMMIT_URL
           git remote -v
 
       - name: Push CodeCommit
