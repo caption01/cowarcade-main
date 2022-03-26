@@ -6,7 +6,11 @@ on:
 
 env:
   CODE_COMMIT_REPO_URL: https://git-codecommit.ap-southeast-1.amazonaws.com/v1/repos/cowarcade-main-app
-  AWS_CODECOMMIT_URL: ${{ secrets.AWS_CODECOMMIT_URL }}
+  AWS_CODECOMMIT_URL1: ${{ secrets.ENV_APP }}
+  AWS_CODECOMMIT_URL2: ${{ secrets.ENV_APP.AWS_CODECOMMIT_URL }}
+  AWS_CODECOMMIT_URL3: ${{ ENV_APP }}
+  AWS_CODECOMMIT_URL4: ${{ ENV_APP.AWS_CODECOMMIT_URL }}
+  AWS_CODECOMMIT_URL5: ${{ AWS_CODECOMMIT_URL }}
 
 jobs:
   codecommit:
@@ -33,7 +37,11 @@ jobs:
       - name: Show ENV
         run: |
           echo "All -> $env"
-          echo "AWS_CODECOMMIT_URL -> $AWS_CODECOMMIT_URL"
+          echo "AWS_CODECOMMIT_URL1 -> $AWS_CODECOMMIT_URL1"
+          echo "AWS_CODECOMMIT_URL2 -> $AWS_CODECOMMIT_URL2"
+          echo "AWS_CODECOMMIT_URL3 -> $AWS_CODECOMMIT_URL3"
+          echo "AWS_CODECOMMIT_URL4 -> $AWS_CODECOMMIT_URL4"
+          echo "AWS_CODECOMMIT_URL5 -> $AWS_CODECOMMIT_URL5"
 
       - name: Add Origin CodeCommit
         run: |
