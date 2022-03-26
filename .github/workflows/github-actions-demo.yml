@@ -25,7 +25,7 @@ jobs:
 
       - name: Push To CodeCommit
         run: |
-          git remote add codecommit https://git-codecommit.ap-southeast-1.amazonaws.com/v1/repos/cowarcade-main-app
+          git remote add codecommit codecommit::ap-southeast-1://cowarcade-main-app
           git push codecommit prod
 
 
