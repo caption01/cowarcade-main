@@ -27,7 +27,11 @@ jobs:
       - name: List All Repository
         run: |
           aws codecommit list-repositories
-          ls -lssh
+          ls -lash
+
+      - name: Show ENV
+        run: |
+          echo "AWS_CODECOMMIT_URL -> ${{ secrets.AWS_CODECOMMIT_URL }}"
 
       - name: Add Origin CodeCommit
         run: |
