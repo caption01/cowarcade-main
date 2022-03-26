@@ -26,9 +26,9 @@ jobs:
 
       - name: Add Origin CodeCommit
         env:
-          AWS_CODECOMMIT_URL_2: ${{ secrets.AWS_CODECOMMIT_URL_2 }}
+          aws_codecommit_url: ${{ secrets.AWS_CODECOMMIT_URL_2 }}
         run: |
-          git remote add codecommit $AWS_CODECOMMIT_URL_2
+          git remote add codecommit $aws_codecommit_url
           git remote -v
 
       - name: Push CodeCommit
