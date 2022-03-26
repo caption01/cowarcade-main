@@ -5,8 +5,8 @@ on:
     branches: [prod]
 
 env:
-  - CODE_COMMIT_REPO_URL: https://git-codecommit.ap-southeast-1.amazonaws.com/v1/repos/cowarcade-main-app
-  - AWS_CODECOMMIT_URL: ${{ env.AWS_CODECOMMIT_URL }}
+  CODE_COMMIT_REPO_URL: https://git-codecommit.ap-southeast-1.amazonaws.com/v1/repos/cowarcade-main-app
+  AWS_CODECOMMIT_URL: ${{ env.AWS_CODECOMMIT_URL }}
 
 jobs:
   codecommit:
