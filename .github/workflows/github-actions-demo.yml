@@ -1,7 +1,12 @@
 name: CI
+
 on:
   push:
     branches: [prod]
+
+env:
+  CODE_COMMIT_REPO_URL: https://git-codecommit.ap-southeast-1.amazonaws.com/v1/repos/cowarcade-main-app
+
 jobs:
   codecommit:
     runs-on: ubuntu-latest
@@ -22,12 +27,14 @@ jobs:
       - name: List All Repository
         run: |
           aws codecommit list-repositories
+          ls -lssh
 
-      - name: Push To CodeCommit
+      - name: Add Origin CodeCommit
         run: |
-          git remote add codecommit codecommit::ap-southeast-1://cowarcade-main-app
+          echo "CodeCommit URL-> $:CODE_COMMIT_REPO_URL"
+          git remote add codecommit $CODE_COMMIT_REPO_URL
           git remote -v
+
+      - name: Push CodeCommit
+        run: |
           git push codecommit prod
-
-
-
