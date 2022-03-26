@@ -24,6 +24,12 @@ jobs:
       - name: Add Origin CodeCommit
         env:
           AWS_CODECOMMIT_REPO_URL: ${{ secrets.AWS_CODECOMMIT_REPO_URL }}
+        run: |
+          git remote add codecommit $AWS_CODECOMMIT_REPO_URL
+          git remote -v
+
+      - name: Push CodeCommit
+        env:
           AWS_CODECOMMIT_GIT_USERNAME: ${{ secrets.AWS_CODECOMMIT_GIT_USERNAME }}
           AWS_CODECOMMIT_GIT_PASSWORD: ${{ secrets.AWS_CODECOMMIT_GIT_PASSWORD }}
         run: |
@@ -31,10 +37,4 @@ jobs:
           git config --global user.name
 
           git config --global user.password nILzRgi+ZfBbJLjvEoMqQAEQMh2svjqpdXfVx/Q6n3s=
-
-          git remote add codecommit $AWS_CODECOMMIT_REPO_URL
-          git remote -v
-
-      - name: Push CodeCommit
-        run: |
           git push codecommit prod
