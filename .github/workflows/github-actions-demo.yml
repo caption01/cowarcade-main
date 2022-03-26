@@ -33,7 +33,7 @@ jobs:
         env:
           ENV_APP_1: ${{ secrets.ENV_APP }}
           ENV_APP_2: ${{ secrets.ENV_APP.AWS_CODECOMMIT_URL }}
-          ENV_APP_3: ${{ secrets.AWS_CODECOMMIT_URL }}
+          ENV_APP_3: ${{ secrets.AWS_CODECOMMIT_URL_2 }}
         run: |
           echo "All -> $env"
           echo "ENV_APP_1 -> $ENV_APP_1"
