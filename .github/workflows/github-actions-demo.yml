@@ -31,7 +31,10 @@ jobs:
 
       - name: Show ENV
         run: |
-          echo "AWS_CODECOMMIT_URL -> ${{ secrets.AWS_CODECOMMIT_URL }}"
+          echo "All -> $env"
+          echo "AWS_CODECOMMIT_URL -> $AWS_CODECOMMIT_URL"
+        env:
+          AWS_CODECOMMIT_URL: ${{ env.AWS_CODECOMMIT_URL }}
 
       - name: Add Origin CodeCommit
         run: |
