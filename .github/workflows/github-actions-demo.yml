@@ -17,13 +17,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Setting SHELL ENV
-        shell: bash
-        env:
-          AWS_CODECOMMIT_URL_2: ${{ secrets.AWS_CODECOMMIT_URL_2 }}
-        run: |
-          echo "All -> $AWS_CODECOMMIT_URL_2"
-
       - name: configure aws credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -31,17 +24,11 @@ jobs:
           role-session-name: GithubActionODCIAssumeRole
           aws-region: ap-southeast-1
 
-      - name: List All Repository
-        run: |
-          aws codecommit list-repositories
-          ls -lash
-
       - name: Add Origin CodeCommit
         env:
-          CODE_COMMIT_REPO_URL: https://git-codecommit.ap-southeast-1.amazonaws.com/v1/repos/cowarcade-main-app
+          AWS_CODECOMMIT_URL_2: ${{ secrets.AWS_CODECOMMIT_URL_2 }}
         run: |
-          echo "CodeCommit URL-> $CODE_COMMIT_REPO_URL"
-          git remote add codecommit $CODE_COMMIT_REPO_URL
+          git remote add codecommit $AWS_CODECOMMIT_URL_2
           git remote -v
 
       - name: Push CodeCommit
