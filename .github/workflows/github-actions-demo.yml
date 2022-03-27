@@ -23,7 +23,7 @@ jobs:
 
 
       - name: Clone repo code commit
-      - uses: actions/setup-python@v3
+        uses: actions/setup-python@v3
         with:
           python-version: '3.9'
         run: |
@@ -33,7 +33,7 @@ jobs:
           git clone codecommit::ap-southeast-1://cowarcade-main-app
           ls -lash
 
-      -name: Show Dir App
+      - name: Show Dir App
         run: |
           echo "root dir"
           ls -lash
