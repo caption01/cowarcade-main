@@ -23,8 +23,8 @@ jobs:
 
       - name: Setting Git Credential
         run: |
-        cd ~
-        ls -lash
+          cd ~
+          ls -lash
 
       - name: Clone repo code commit
         run: |
