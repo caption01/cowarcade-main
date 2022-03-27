@@ -45,15 +45,15 @@ jobs:
 
       - name: Remove All Clone App Except .git
         run: |
-          shopt -s extglob 
-          rm -rf !(.git)
+          find . ! -name '.git' -type f -exec rm -f {} +
+          rm -r -f
           ls -lash
 
       - name: Copy source into app and unzip
         run: |
-          mv source.zip app
-          unzip source.zip
           ls -lash
+          mv source.zip ./app
+          unzip source.zip
 
       - name: Check git status
         run: |
