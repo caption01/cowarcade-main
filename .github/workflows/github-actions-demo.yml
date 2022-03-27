@@ -27,22 +27,47 @@ jobs:
         with:
           python-version: '3.9'
 
+      - name: Install Deps
+        run: |
+          pip install git-remote-codecommit
+
+      - name: Zip All Content in directory except .git
+        run: |
+          zip -r source.zip . -x ".git"
+
       - name: Clone App
         run: |
-          mkdir clone-app
-          cd clone-app
+          mkdir app
+          cd app
           pip install git-remote-codecommit
           git clone codecommit::ap-southeast-1://cowarcade-main-app
           ls -lash
 
-      - name: Show Dir App
+      - name: Remove All Clone App Except .git
         run: |
-          echo "root dir"
+          shopt -s extglob 
+          rm -- !(.git)
           ls -lash
 
-          echo "app dir"
-          cd clone-app
+      - name: Copy source into app and unzip
+        run: |
+          mv source.zip app
+          unzip source.zip
           ls -lash
+
+      - name: Check git status
+        run: |
+          git status
+          git remote -v
+
+      # - name: Show Dir App
+      #   run: |
+      #     echo "root dir"
+      #     ls -lash
+
+      #     echo "app dir"
+      #     cd clone-app
+      #     ls -lash
 
       # - name: Add Origin CodeCommit
       #   env:
