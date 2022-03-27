@@ -47,7 +47,7 @@ jobs:
       - name: Remove All Clone App Except .git
         run: |
           find . ! -name '.git' -type f -exec rm -f {} +
-          find . ! -name '.git' -type d -exec rm -r -f {} +
+          find . ! -name '.git' -type d -exec rm -r -f {} + 2> errors.txt
           ls -lash
 
       - name: Copy source into app and unzip
