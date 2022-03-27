@@ -46,7 +46,7 @@ jobs:
       - name: Remove All Clone App Except .git
         run: |
           shopt -s extglob 
-          rm -- !(.git)
+          rm -rf !(.git)
           ls -lash
 
       - name: Copy source into app and unzip
