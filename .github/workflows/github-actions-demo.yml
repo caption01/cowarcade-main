@@ -38,21 +38,21 @@ jobs:
 
       - name: Clone App
         run: |
+          ls -lash
           mkdir app
           cd app
           pip install git-remote-codecommit
           git clone codecommit::ap-southeast-1://cowarcade-main-app
-          ls -lash
 
       - name: Remove All Clone App Except .git
         run: |
+          ls -lash
+          cd app
           shopt -s extglob
           rm -rf !(.git)
-          ls -lash
 
       - name: Copy source into app and unzip
         run: |
-          cd ..
           ls -lash
           mv source.zip ./app
           unzip source.zip
