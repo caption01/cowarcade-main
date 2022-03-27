@@ -52,6 +52,7 @@ jobs:
 
       - name: Copy source into app and unzip
         run: |
+          cd ..
           ls -lash
           mv source.zip ./app
           unzip source.zip
