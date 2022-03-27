@@ -33,7 +33,7 @@ jobs:
 
       - name: Zip All Content in directory except .git
         run: |
-          zip -r source.zip . -x ".git/*"
+          zip -r source . -x ".git/*"
           ls -lash
 
       - name: Clone App
@@ -54,8 +54,8 @@ jobs:
       - name: Copy source into app and unzip
         run: |
           ls -lash
-          mv source.zip ./app
-          unzip source.zip
+          mv source ./app
+          unzip source
 
       - name: Check git status
         run: |
