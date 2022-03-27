@@ -31,14 +31,11 @@ jobs:
           ls -lash
           mkdir clone-app
           cd clone-app
-          touch hello >> text.txt
+          echo hello >> text.txt
 
       - name: Show dir
         run: |
-          echo show dir
-          ls -lash
           cd clone-app
-          ls -lash
           cat text.txt
 
       # - name: Add Origin CodeCommit
