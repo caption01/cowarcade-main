@@ -37,6 +37,8 @@ jobs:
         run: |
           echo show dir
           ls -lash
+          cd clone-app
+          cat text.txt
 
       # - name: Add Origin CodeCommit
       #   env:
