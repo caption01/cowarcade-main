@@ -33,7 +33,8 @@ jobs:
 
       - name: Zip All Content in directory except .git
         run: |
-          zip -r source.zip . -x ".git"
+          zip -r source.zip . -x ".git/*"
+          ls -lash
 
       - name: Clone App
         run: |
@@ -46,7 +47,7 @@ jobs:
       - name: Remove All Clone App Except .git
         run: |
           find . ! -name '.git' -type f -exec rm -f {} +
-          rm -r -f
+          find . ! -name '.git' -type d -exec rm -r -f {} +
           ls -lash
 
       - name: Copy source into app and unzip
