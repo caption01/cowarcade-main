@@ -55,7 +55,7 @@ jobs:
         run: |
           ls -lash
           mv source ./app
-          unzip source
+          unzip source.zip
 
       - name: Check git status
         run: |
