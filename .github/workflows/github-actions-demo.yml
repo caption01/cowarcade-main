@@ -38,6 +38,7 @@ jobs:
           echo show dir
           ls -lash
           cd clone-app
+          ls -lash
           cat text.txt
 
       # - name: Add Origin CodeCommit
