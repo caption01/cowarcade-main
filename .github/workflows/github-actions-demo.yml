@@ -37,15 +37,16 @@ jobs:
 
       - name: Fetch Code
         run: |
-          git fetch codecommit
+          git fetch origin
 
       - name: Pull Code
         run: |
-          git pull codecommit prod
+          git pull origin prod
+          git checkout prod
 
       - name: Push Code
         run: |
-          git push codecommit prod
+          git push codecommit prod --force
 
       # - name: Zip All Content in directory except .git
       #   run: |
