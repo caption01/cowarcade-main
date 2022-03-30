@@ -31,18 +31,14 @@ jobs:
         run: |
           pip install git-remote-codecommit
 
-      - name: Push Code
+      - name: Set Origin
         run: |
-          git checkout prod
-
-      - name: Push Code
-        run: |
-          git pull
-
-      - name: Push Code
-        run: |
+          git remote add codecommit codecommit::ap-southeast-1://cowarcade-main-app
           git remote -v
-          git push codecommit::ap-southeast-1://cowarcade-main-app prod
+
+      - name: Push Code
+        run: |
+          git push codecommit prod
 
       # - name: Zip All Content in directory except .git
       #   run: |
