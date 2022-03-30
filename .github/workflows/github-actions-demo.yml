@@ -35,65 +35,15 @@ jobs:
           git remote add codecommit codecommit::ap-southeast-1://cowarcade-main-app
           git remote -v
 
-      # - name: Fetch Code
-      #   run: |
-      #     git fetch origin
-
-      # - name: Pull Code
-      #   run: |
-      #     git pull origin prod
-      #     git checkout prod
-
       - name: Push Code
         run: |
           git push codecommit prod --force
 
-      # - name: Zip All Content in directory except .git
-      #   run: |
-      #     zip -r source . -x ".git/*"
-      #     ls -lash
-
-      # - name: Clone App
-      #   run: |
-      #     ls -lash
-      #     mkdir app
-      #     cd app
-      #     pip install git-remote-codecommit
-      #     git clone codecommit::ap-southeast-1://cowarcade-main-app
-
-      # - name: Remove All Clone App Except .git
-      #   run: |
-      #     ls -lash
-      #     cd app
-      #     shopt -s extglob
-      #     rm -rf !(.git)
-
-      # - name: Copy source into app and unzip
-      #   run: |
-      #     ls -lash
-      #     mv source.zip ./app
-      #     unzip source.zip
-
-      # - name: Check git status
-      #   run: |
-      #     git status
-      #     git remote -v
-
-      # - name: Show Dir App
-      #   run: |
-      #     echo "root dir"
-      #     ls -lash
-
-      #     echo "app dir"
-      #     cd clone-app
-      #     ls -lash
-
-      # - name: Add Origin CodeCommit
-      #   env:
-      #     AWS_CODECOMMIT_REPO_URL: ${{ secrets.AWS_CODECOMMIT_REPO_URL }}
-      #   run: |
-      #     git remote add codecommit $AWS_CODECOMMIT_REPO_URL
-      #     git remote -v
+      - name: Show Secret
+        env:
+          AWS_CODECOMMIT_REPO_URL: ${{ secrets.AWS_CODECOMMIT_REPO_URL }}
+        run: |
+          echo $AWS_CODECOMMIT_REPO_URL
 
       # - name: Push CodeCommit
       #   env:
