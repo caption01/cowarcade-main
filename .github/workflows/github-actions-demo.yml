@@ -26,24 +26,26 @@ jobs:
         with:
           python-version: '3.9'
 
-      # - name: Install Deps
-      #   run: |
-      #     pip install git-remote-codecommit
+      - name: Install Deps
+        run: |
+          pip install git-remote-codecommit
 
       - name: Set Origin
+        env:
+            AWS_CODECOMMIT_REPO_URL: ${{ secrets.AWS_CODECOMMIT_REPO_URL }}
         run: |
-          git remote add codecommit codecommit::ap-southeast-1://cowarcade-main-app
+          git remote add codecommit $AWS_CODECOMMIT_REPO_URL
           git remote -v
 
       - name: Push Code
         run: |
           git push codecommit prod --force
 
-      - name: Show Secret
-        env:
-          AWS_CODECOMMIT_REPO_URL: ${{ secrets.AWS_CODECOMMIT_REPO_URL }}
-        run: |
-          echo $AWS_CODECOMMIT_REPO_URL
+      # - name: Show Secret
+      #   env:
+      #     AWS_CODECOMMIT_REPO_URL: ${{ secrets.AWS_CODECOMMIT_REPO_URL }}
+      #   run: |
+      #     echo $AWS_CODECOMMIT_REPO_URL
 
       # - name: Push CodeCommit
       #   env:
