@@ -26,9 +26,9 @@ jobs:
         with:
           python-version: '3.9'
 
-      - name: Install Deps
-        run: |
-          pip install git-remote-codecommit
+      # - name: Install Deps
+      #   run: |
+      #     pip install git-remote-codecommit
 
       - name: Set Origin
         run: |
