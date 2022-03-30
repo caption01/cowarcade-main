@@ -36,26 +36,9 @@ jobs:
         env:
             AWS_CODECOMMIT_REPO_URL: ${{ secrets.AWS_CODECOMMIT_REPO_URL }}
         run: |
-          git remote add codecommit codecommit::ap-southeast-1://cowarcade-main-app
+          git remote add codecommit $AWS_CODECOMMIT_REPO_URL
           git remote -v
 
       - name: Push Code
         run: |
           git push codecommit prod --force
-
-      # - name: Show Secret
-      #   env:
-      #     AWS_CODECOMMIT_REPO_URL: ${{ secrets.AWS_CODECOMMIT_REPO_URL }}
-      #   run: |
-      #     echo $AWS_CODECOMMIT_REPO_URL
-
-      # - name: Push CodeCommit
-      #   env:
-      #     AWS_CODECOMMIT_GIT_USERNAME: ${{ secrets.AWS_CODECOMMIT_GIT_USERNAME }}
-      #     AWS_CODECOMMIT_GIT_PASSWORD: ${{ secrets.AWS_CODECOMMIT_GIT_PASSWORD }}
-      #   run: |
-      #     git config --global user.name GithubActionUser-at-616520069289
-      #     git config --global user.name
-
-      #     git config --global user.password nILzRgi+ZfBbJLjvEoMqQAEQMh2svjqpdXfVx/Q6n3s=
-      #     git push codecommit prod
