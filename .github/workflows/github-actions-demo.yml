@@ -31,36 +31,40 @@ jobs:
         run: |
           pip install git-remote-codecommit
 
-      - name: Zip All Content in directory except .git
+      - name: Push Code
         run: |
-          zip -r source . -x ".git/*"
-          ls -lash
+          git push codecommit::ap-southeast-1://cowarcade-main-app prod
 
-      - name: Clone App
-        run: |
-          ls -lash
-          mkdir app
-          cd app
-          pip install git-remote-codecommit
-          git clone codecommit::ap-southeast-1://cowarcade-main-app
+      # - name: Zip All Content in directory except .git
+      #   run: |
+      #     zip -r source . -x ".git/*"
+      #     ls -lash
 
-      - name: Remove All Clone App Except .git
-        run: |
-          ls -lash
-          cd app
-          shopt -s extglob
-          rm -rf !(.git)
+      # - name: Clone App
+      #   run: |
+      #     ls -lash
+      #     mkdir app
+      #     cd app
+      #     pip install git-remote-codecommit
+      #     git clone codecommit::ap-southeast-1://cowarcade-main-app
 
-      - name: Copy source into app and unzip
-        run: |
-          ls -lash
-          mv source.zip ./app
-          unzip source.zip
+      # - name: Remove All Clone App Except .git
+      #   run: |
+      #     ls -lash
+      #     cd app
+      #     shopt -s extglob
+      #     rm -rf !(.git)
 
-      - name: Check git status
-        run: |
-          git status
-          git remote -v
+      # - name: Copy source into app and unzip
+      #   run: |
+      #     ls -lash
+      #     mv source.zip ./app
+      #     unzip source.zip
+
+      # - name: Check git status
+      #   run: |
+      #     git status
+      #     git remote -v
 
       # - name: Show Dir App
       #   run: |
