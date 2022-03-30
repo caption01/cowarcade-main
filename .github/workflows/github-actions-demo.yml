@@ -33,6 +33,15 @@ jobs:
 
       - name: Push Code
         run: |
+          git checkout prod
+
+      - name: Push Code
+        run: |
+          git pull
+
+      - name: Push Code
+        run: |
+          git remote -v
           git push codecommit::ap-southeast-1://cowarcade-main-app prod
 
       # - name: Zip All Content in directory except .git
