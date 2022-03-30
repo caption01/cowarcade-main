@@ -41,7 +41,7 @@ jobs:
 
       - name: Pull Code
         run: |
-          git pull
+          git pull codecommit prod
 
       - name: Push Code
         run: |
