@@ -34,7 +34,7 @@ jobs:
         env:
             AWS_CODECOMMIT_REPO_URL: ${{ secrets.AWS_CODECOMMIT_REPO_URL }}
         run: |
-          git remote add codecommit $AWS_CODECOMMIT_REPO_URL
+          git remote add codecommit codecommit::ap-southeast-1://cowarcade-main-app
           git remote -v
 
       - name: Push Code
