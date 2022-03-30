@@ -35,14 +35,14 @@ jobs:
           git remote add codecommit codecommit::ap-southeast-1://cowarcade-main-app
           git remote -v
 
-      - name: Fetch Code
-        run: |
-          git fetch origin
+      # - name: Fetch Code
+      #   run: |
+      #     git fetch origin
 
-      - name: Pull Code
-        run: |
-          git pull origin prod
-          git checkout prod
+      # - name: Pull Code
+      #   run: |
+      #     git pull origin prod
+      #     git checkout prod
 
       - name: Push Code
         run: |
