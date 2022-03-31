@@ -15,12 +15,14 @@ module.exports = {
   },
   plugins: ['@typescript-eslint'],
   rules: {
+    '@typescript-eslint/no-explicit-any': 'warn',
     '@typescript-eslint/no-unused-vars': 'error',
-    '@typescript-eslint/consistent-type-definitions': 'off',
-    "@typescript-eslint/no-unsafe-assignment": "off",
     semi: 'error',
     quotes: ['error', 'single', { 'avoidEscape': true }],
-    "jsx-quotes": ["error", "prefer-single"]
+    "jsx-quotes": ["error", "prefer-single"],
+    '@typescript-eslint/consistent-type-definitions': 'off',
+    "@typescript-eslint/no-unsafe-assignment": "off",
+    'react/no-unescaped-entities': 'off',
   },
   env: {
     browser: true,

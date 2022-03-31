@@ -1,12 +1,12 @@
 import { ButtonProps as ButtonAntdProps } from 'antd';
 
-import { HTMLRefElement } from 'src/utils/hooks';
+// import { HTMLRefElement } from 'src/utils/hooks';
 import { SpaceMixin } from 'src/theme/mixins';
 
 type ButtonAntdPropsOmit = Omit<ButtonAntdProps, 'type'>;
 
 interface ButtonStyle extends SpaceMixin {
-  ref?: HTMLRefElement;
+  ref?: any;
   bgColor?: string;
   fontColor?: string;
 }

@@ -12,7 +12,7 @@ const Wrapper = styled.div`
 
 const example = '/assets/example.jpeg';
 
-function Image({ quality = 60, src = example, ...props }: ImageFillProps) {
+function Image({ quality = 60, src = example }: ImageFillProps) {
   return (
     <Wrapper>
       <NextImage
