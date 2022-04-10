@@ -105,6 +105,7 @@ Resources:
         ComputeType: BUILD_GENERAL1_SMALL
         Type: LINUX_CONTAINER
         Image: aws/codebuild/ubuntu-base:14.04
+        PrivilegedMode: true
         EnvironmentVariables:
           - Name: DOCKER_REPOSITORY_URL
             Type: PLAINTEXT
@@ -147,6 +148,20 @@ Resources:
                   - s3:PutObject
                 Resource:
                   - !Sub 'arn:aws:s3:::${ArtifactCodePipelineBucket}/*'
+        - PolicyName: 'AllowBuildAndPushImage'
+          PolicyDocument:
+            Version: 2012-10-17
+            Statement:
+              - Effect: Allow
+                Action:
+                  - ecr-public:BatchCheckLayerAvailability,
+                  - ecr-public:CompleteLayerUpload,
+                  - ecr-public:GetAuthorizationToken,
+                  - ecr-public:InitiateLayerUpload,
+                  - ecr-public:PutImage,
+                  - ecr-public:UploadLayerPart,
+                  - sts:GetServiceBearerToken
+                Resource: '*'
 
   CowarcadeCodePipelineRole:
     Type: 'AWS::IAM::Role'
