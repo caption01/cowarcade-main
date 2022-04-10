@@ -122,7 +122,7 @@ Resources:
       Policies:
         - PolicyName: 'logs'
           PolicyDocument:
-            Version: '2012-10-17'
+            Version: 2012-10-17
             Statement:
               - Effect: 'Allow'
                 Action:
@@ -132,6 +132,17 @@ Resources:
                   - ecr:GetAuthorizationToken
                   - ssm:GetParameters
                 Resource: '*'
+        - PolicyName: 'AccessArtifactBucket'
+          PolicyDocument:
+            Version: 2012-10-17
+            Statement:
+              - Effect: Allow
+                Action:
+                  - s3:GetObject
+                  - s3:GetObjectVersion
+                  - s3:PutObject
+                Resource:
+                  - !Sub 'arn:aws:s3:::${ArtifactCodePipelineBucket}/*'
 
   CowarcadeCodePipelineRole:
     Type: 'AWS::IAM::Role'
