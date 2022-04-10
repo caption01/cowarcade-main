@@ -10,7 +10,13 @@ phases:
   build:
     commands:
       - echo Build started on `date`
-      - ls -lash
+      - echo "currect commit $CODEBUILD_RESOLVED_SOURCE_VERSION"
+      - echo Building the Docker image...
+      - docker build -t cowarcade-main-app:$CODEBUILD_RESOLVED_SOURCE_VERSION -f Dockerfile.prod .
+      - docker tag cowarcade-main-app:$CODEBUILD_RESOLVED_SOURCE_VERSION $DOCKER_REPOSITORY_URL:$CODEBUILD_RESOLVED_SOURCE_VERSION
   post_build:
     commands:
+      - echo Pushing the Docker image...
+      - echo "docker repo target $DOCKER_REPOSITORY_URL"
+      - docker push DOCKER_REPOSITORY_URL:$CODEBUILD_RESOLVED_SOURCE_VERSION
       - echo Build completed on `date`
