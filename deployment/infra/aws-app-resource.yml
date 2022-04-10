@@ -110,6 +110,9 @@ Resources:
           - Name: DOCKER_REPOSITORY_URL
             Type: PLAINTEXT
             Value: !GetAtt CowarcadeECR.RepositoryUri
+          - Name: AWS_DEFAULT_REGION
+            Type: PLAINTEXT
+            Value: ap-southeast-1
       Name: !Ref AWS::StackName
       ServiceRole: !Ref CodeBuildProjectRole
 
@@ -154,13 +157,14 @@ Resources:
             Statement:
               - Effect: Allow
                 Action:
-                  - ecr-public:BatchCheckLayerAvailability,
-                  - ecr-public:CompleteLayerUpload,
-                  - ecr-public:GetAuthorizationToken,
-                  - ecr-public:InitiateLayerUpload,
-                  - ecr-public:PutImage,
-                  - ecr-public:UploadLayerPart,
-                  - sts:GetServiceBearerToken
+                  - ecr:GetAuthorizationToken
+                  - ecr:BatchCheckLayerAvailability
+                  - ecr:GetDownloadUrlForLayer
+                  - ecr:BatchGetImage
+                  - ecr:CompleteLayerUpload
+                  - ecr:InitiateLayerUpload
+                  - ecr:PutImage
+                  - ecr:UploadLayerPart
                 Resource: '*'
 
   CowarcadeCodePipelineRole:
