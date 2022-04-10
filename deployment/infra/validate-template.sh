@@ -1,0 +1,1 @@
+aws cloudformation validate-template --template-body file://aws-app-resource.yml --profile nutchapon

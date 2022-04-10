@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import styled from 'styled-components';
 
 import { Card, Box, ImageFill, Text } from 'src/components';
@@ -30,7 +29,6 @@ function CardPopup({
   content = '',
   title = '',
   link = '',
-  ...props
 }: CardPopupProps) {
   return (
     <Wrapper active={active}>
