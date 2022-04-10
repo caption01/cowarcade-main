@@ -105,6 +105,10 @@ Resources:
         ComputeType: BUILD_GENERAL1_SMALL
         Type: LINUX_CONTAINER
         Image: aws/codebuild/ubuntu-base:14.04
+        EnvironmentVariables:
+          - Name: DOCKER_REPOSITORY_URL
+            Type: PLAINTEXT
+            Value: !GetAtt CowarcadeECR.RepositoryUri
       Name: !Ref AWS::StackName
       ServiceRole: !Ref CodeBuildProjectRole
 
