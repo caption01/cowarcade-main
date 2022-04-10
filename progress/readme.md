@@ -3,7 +3,9 @@
 ---
 
 ## Contents..
+
 - update readme commit 2
+
 ---
 
 ## References
@@ -15,6 +17,7 @@
 - [github odic](https://stackoverflow.com/questions/70025635/aws-github-action-user-is-not-authorized-to-perform-stsassumerole-on-resourc)
 - [github action odci](https://awsteele.com/blog/2021/09/15/aws-federation-comes-to-github-actions.html)
 - [sample-cloudformation](https://blog.boltops.com/2017/03/24/a-simple-introduction-to-aws-cloudformation-part-3-updating-a-stack/)
+- [codebuild-and-ecr](https://dlim716.medium.com/how-to-codebuild-with-docker-image-ca5d4389b486)
 
 **Project Inspiration**
 
