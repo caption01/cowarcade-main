@@ -18,5 +18,5 @@ phases:
     commands:
       - echo Pushing the Docker image...
       - echo "docker repo target $DOCKER_REPOSITORY_URL"
-      - docker push DOCKER_REPOSITORY_URL:$CODEBUILD_RESOLVED_SOURCE_VERSION
+      - docker push $DOCKER_REPOSITORY_URL:$CODEBUILD_RESOLVED_SOURCE_VERSION
       - echo Build completed on `date`
