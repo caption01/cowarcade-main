@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "eslint --ext .js,.ts .",
     "lint-fix": "eslint --ext .js,.ts,.tsx . --fix",
-    "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\""
+    "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\"",
+    "validate-template": "cd ./deployment/infra && ./validate-template.sh",
+    "update-stack": "cd ./deployment/infra && ./update-stack.sh"
   },
   "dependencies": {
     "antd": "^4.18.9",
