@@ -6,6 +6,8 @@ phases:
       nodejs: 14
   pre_build:
     commands:
+      - aws --version
+      - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
       - echo Nothing to do in the pre_build phase...
   build:
     commands:
