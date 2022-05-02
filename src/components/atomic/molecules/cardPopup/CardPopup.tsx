@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { Card, Box, ImageFill, Text } from 'src/components';
+import { Card, Box, Text, ImageFill } from 'src/components';
 import { CardPopupProps, CardPopupStyleProps } from './CardPopupTypes';
 
 const Wrapper = styled.div<CardPopupStyleProps>`
@@ -43,9 +43,7 @@ function CardPopup({
                 {title}
               </a>
             </Text>
-            <Text type='body'>
-              {content}
-            </Text>
+            <Text type='body'>{content}</Text>
           </Box>
         </Box>
       </Card>

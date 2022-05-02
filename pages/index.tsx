@@ -142,6 +142,14 @@ const Home: NextPage = () => {
 
 export default Home;
 
+// eslint-disable-next-line @typescript-eslint/require-await
+export async function getStaticProps() {
+  const props = {};
+  return {
+    props,
+  };
+}
+
 function isActive(itemIndex: number, activeIndex: number): boolean {
   return itemIndex === activeIndex;
 }
