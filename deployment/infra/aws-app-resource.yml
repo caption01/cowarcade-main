@@ -13,6 +13,9 @@ Parameters:
     Description: CodeCommit branch name
     Type: String
     Default: prod
+  FrontEndBucketName:
+    Type: String
+    Default: 'cowarcade-main-app-frontend'
 
 Conditions:
   CreateOIDCProvider: !Equals
@@ -24,6 +27,25 @@ Resources:
     Type: AWS::CodeCommit::Repository
     Properties:
       RepositoryName: cowarcade-main-app
+
+  FrontEndBucket:
+    Type: 'AWS::S3::Bucket'
+    Properties:
+      BucketName: !Ref FrontEndBucketName
+      WebsiteConfiguration:
+        ErrorDocument: 'index.html'
+        IndexDocument: 'index.html'
+
+  FrontEndBucketReadPolicy:
+    Type: 'AWS::S3::BucketPolicy'
+    Properties:
+      Bucket: !Ref FrontEndBucket
+      PolicyDocument:
+        Statement:
+          - Action: 's3:GetObject'
+            Effect: Allow
+            Resource: !Sub 'arn:aws:s3:::${FrontEndBucket}/*'
+            Principal: '*'
 
   ArtifactCodePipelineBucket:
     Type: AWS::S3::Bucket
@@ -38,9 +60,7 @@ Resources:
         Statement:
           - Sid: AllowPushPull
             Effect: Allow
-            Principal:
-              AWS:
-                - !Sub arn:aws:iam::${AWS::AccountId}:root
+            Principal: '*'
             Action:
               - 'ecr:GetDownloadUrlForLayer'
               - 'ecr:BatchGetImage'

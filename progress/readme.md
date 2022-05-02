@@ -26,3 +26,5 @@
 - [ui-inspire](https://www.freepik.com/premium-vector/colorful-web-design-button-collection-with-flat-design_3099346.htm)
 - [use-hover](https://usehooks.com/useHover/)
 - [button-animation](https://dev.to/webdeasy/top-20-css-buttons-animations-f41)
+- [static-web-s3(1)](https://medium.com/swlh/aws-website-hosting-with-cloudformation-guide-36cac151d1af)
+- [static-web-s3(2)](https://www.coletiv.com/blog/how-to-use-aws-cloud-formation-to-setup-the-infrastructure-for-a-static-website/)
