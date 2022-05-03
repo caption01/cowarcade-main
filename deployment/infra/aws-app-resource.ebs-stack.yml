@@ -15,7 +15,7 @@ Parameters:
     Default: prod
   FrontEndBucketName:
     Type: String
-    Default: cowarcade-main-app-frontend
+    Default: 'cowarcade-main-app-frontend'
 
 Conditions:
   CreateOIDCProvider: !Equals
@@ -28,71 +28,50 @@ Resources:
     Properties:
       RepositoryName: cowarcade-main-app
 
-  CloudFrontOriginIdentity:
-    Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
-    Properties:
-      CloudFrontOriginAccessIdentityConfig:
-        Comment: 'origin identity'
-
-  PublicDistribution:
-    Type: AWS::CloudFront::Distribution
-    Properties:
-      DistributionConfig:
-        Origins:
-          - DomainName: !GetAtt FrontEndBucket.DomainName
-            Id: !Ref FrontEndBucket
-            S3OriginConfig:
-              OriginAccessIdentity: !Sub 'origin-access-identity/cloudfront/${CloudFrontOriginIdentity}'
-        Enabled: true
-        HttpVersion: 'http2'
-        DefaultRootObject: 'index.html'
-        CustomErrorResponses:
-          - ErrorCachingMinTTL: 60
-            ErrorCode: 403
-            ResponseCode: 403
-            ResponsePagePath: '/index.html'
-        DefaultCacheBehavior:
-          AllowedMethods:
-            - GET
-            - HEAD
-          TargetOriginId: !Ref FrontEndBucket
-          ForwardedValues:
-            QueryString: 'false'
-            Cookies:
-              Forward: none
-          ViewerProtocolPolicy: redirect-to-https
-        ViewerCertificate:
-          CloudFrontDefaultCertificate: true
-
   FrontEndBucket:
     Type: 'AWS::S3::Bucket'
     Properties:
       BucketName: !Ref FrontEndBucketName
-      PublicAccessBlockConfiguration:
-        BlockPublicAcls: true
-        BlockPublicPolicy: true
-        IgnorePublicAcls: true
-        RestrictPublicBuckets: true
       WebsiteConfiguration:
         ErrorDocument: 'index.html'
         IndexDocument: 'index.html'
 
-  FrontEndBucketPolicy:
+  FrontEndBucketReadPolicy:
     Type: 'AWS::S3::BucketPolicy'
     Properties:
       Bucket: !Ref FrontEndBucket
       PolicyDocument:
-        Version: 2012-10-17
         Statement:
           - Action: 's3:GetObject'
             Effect: Allow
             Resource: !Sub 'arn:aws:s3:::${FrontEndBucket}/*'
-            Principal:
-              AWS: !Sub 'arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity ${CloudFrontOriginIdentity}'
+            Principal: '*'
 
   ArtifactCodePipelineBucket:
     Type: AWS::S3::Bucket
     DeletionPolicy: Delete
+
+  CowarcadeECR:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: cowarcade-main-app-registry
+      RepositoryPolicyText:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: AllowPushPull
+            Effect: Allow
+            Principal: '*'
+            Action:
+              - 'ecr:GetDownloadUrlForLayer'
+              - 'ecr:BatchGetImage'
+              - 'ecr:BatchCheckLayerAvailability'
+              - 'ecr:PutImage'
+              - 'ecr:InitiateLayerUpload'
+              - 'ecr:UploadLayerPart'
+              - 'ecr:CompleteLayerUpload'
+      Tags:
+        - Key: 'app'
+          Value: 'cowarcade-main-app'
 
   CowarcadeCodePipeline:
     Type: AWS::CodePipeline::Pipeline
@@ -132,24 +111,7 @@ Resources:
                 ProjectName: !Ref CodeBuildProject
               InputArtifacts:
                 - Name: SourceOutput
-              OutputArtifacts:
-                - Name: BuildOutput
               RunOrder: 1
-        - Name: Deploy
-          Actions:
-            - Name: DeployToBucket
-              ActionTypeId:
-                Category: Deploy
-                Owner: AWS
-                Provider: S3
-                Version: '1'
-              RunOrder: 1
-              Configuration:
-                BucketName: !Ref FrontEndBucket
-                Extract: 'true'
-              InputArtifacts:
-                - Name: BuildOutput
-              Region: ap-southeast-1
 
   CodeBuildProject:
     Type: AWS::CodeBuild::Project
@@ -165,6 +127,9 @@ Resources:
         Image: aws/codebuild/ubuntu-base:14.04
         PrivilegedMode: true
         EnvironmentVariables:
+          - Name: DOCKER_REPOSITORY_URL
+            Type: PLAINTEXT
+            Value: !GetAtt CowarcadeECR.RepositoryUri
           - Name: AWS_DEFAULT_REGION
             Type: PLAINTEXT
             Value: ap-southeast-1
@@ -206,6 +171,21 @@ Resources:
                   - s3:PutObject
                 Resource:
                   - !Sub 'arn:aws:s3:::${ArtifactCodePipelineBucket}/*'
+        - PolicyName: 'AllowBuildAndPushImage'
+          PolicyDocument:
+            Version: 2012-10-17
+            Statement:
+              - Effect: Allow
+                Action:
+                  - ecr:GetAuthorizationToken
+                  - ecr:BatchCheckLayerAvailability
+                  - ecr:GetDownloadUrlForLayer
+                  - ecr:BatchGetImage
+                  - ecr:CompleteLayerUpload
+                  - ecr:InitiateLayerUpload
+                  - ecr:PutImage
+                  - ecr:UploadLayerPart
+                Resource: '*'
 
   CowarcadeCodePipelineRole:
     Type: 'AWS::IAM::Role'
