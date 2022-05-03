@@ -12,7 +12,11 @@ const Wrapper = styled.div`
 
 const example = '/assets/example.jpeg';
 
-function Image({ quality = 60, src = example }: ImageFillProps) {
+function ImageFill({
+  quality = 60,
+  src = example,
+  unoptimized = false,
+}: ImageFillProps) {
   return (
     <Wrapper>
       <NextImage
@@ -21,9 +25,10 @@ function Image({ quality = 60, src = example }: ImageFillProps) {
         layout='fill'
         objectFit='contain'
         quality={quality}
+        unoptimized={unoptimized}
       />
     </Wrapper>
   );
 }
 
-export default Image;
+export default ImageFill;
