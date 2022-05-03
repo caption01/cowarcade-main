@@ -27,8 +27,10 @@ then
 
     if [ -z $aws_profile_name ]
     then
+    echo "deploy without profile setting" 
     aws s3 sync . s3://$s3_bucket_name
     else
+    echo "deploy with profile setting $aws_profile_name" 
     aws s3 sync . s3://$s3_bucket_name --profile $aws_profile_name
     fi
 else

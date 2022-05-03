@@ -10,8 +10,8 @@
     "lint": "eslint --ext .js,.ts .",
     "lint-fix": "eslint --ext .js,.ts,.tsx . --fix",
     "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\"",
-    "validate-template": "cd ./deployment/infra && ./validate-template.sh",
-    "update-stack": "cd ./deployment/infra && ./update-stack.sh",
+    "validate-template": "cd ./deployment/scripts && ./validate-template.sh",
+    "update-stack": "cd ./deployment/scripts && ./update-stack.sh",
     "deploy-to-s3": "cd ./deployment/scripts && ./deploy-to-s3.sh -p nutchapon"
   },
   "dependencies": {
