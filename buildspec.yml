@@ -13,6 +13,8 @@ phases:
     commands:
       - echo Build started on `date`
       - echo "currect commit $CODEBUILD_RESOLVED_SOURCE_VERSION"
+      - ls -lash
+      - npm install
       - echo Build Static Assets...
       - npm run build-static
       - echo show build artifact files
