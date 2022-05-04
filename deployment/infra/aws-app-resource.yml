@@ -162,8 +162,8 @@ Resources:
       Environment:
         ComputeType: BUILD_GENERAL1_SMALL
         Type: LINUX_CONTAINER
-        Image: aws/codebuild/ubuntu-base:14.04
-        PrivilegedMode: true
+        Image: aws/codebuild/standard:5.0
+        PrivilegedMode: false
         EnvironmentVariables:
           - Name: AWS_DEFAULT_REGION
             Type: PLAINTEXT
